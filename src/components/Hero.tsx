@@ -40,7 +40,7 @@ const Hero = () => {
               Hello, I'm
             </p>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 animate-slide-up">
-              Alex Johnson
+              Aman Jat
             </h1>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gradient mb-6 animate-slide-up">
               Full-Stack Developer
@@ -58,7 +58,7 @@ const Hero = () => {
             <Button
               onClick={() => scrollToSection('projects')}
               size="lg"
-              className="hero-gradient text-white font-semibold px-8 py-3 rounded-full hover-glow"
+              className="hero-gradient text-white font-semibold px-8 py-3 rounded-full hover-glow transition-all duration-300"
             >
               View My Work
             </Button>
@@ -66,7 +66,7 @@ const Hero = () => {
               onClick={() => scrollToSection('contact')}
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-foreground px-8 py-3 rounded-full transition-all duration-300"
+              className="border-white text-grey hover:bg-white hover:text-foreground hover-glow px-8 py-3 rounded-full transition-all duration-300"
             >
               Get In Touch
             </Button>

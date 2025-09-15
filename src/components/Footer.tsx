@@ -37,7 +37,7 @@ const Footer = () => {
                 onClick={scrollToTop}
                 className="text-2xl font-bold text-gradient hover:opacity-80 transition-opacity duration-300"
               >
-                Alex Johnson
+                Aman Jat
               </button>
               <p className="text-background/80 leading-relaxed">
                 Full-stack developer passionate about creating exceptional digital experiences 
@@ -96,9 +96,8 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               {/* Copyright */}
               <div className="flex items-center space-x-2 text-background/60">
-                <span>© {currentYear} Alex Johnson. Made with</span>
+                <span>© {currentYear} Aman Jat. Made with</span>
                 <Heart className="w-4 h-4 text-red-400 fill-current" />
-                <span>using React & Tailwind CSS</span>
               </div>
 
               {/* Back to Top */}
