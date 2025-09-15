@@ -75,7 +75,7 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex justify-center space-x-6 mb-12 animate-scale-in">
             <a
-              href="https://github.com"
+              href="https://github.com/aman-jat"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-hero-secondary transition-colors duration-300 tech-icon"
@@ -83,7 +83,7 @@ const Hero = () => {
               <Github size={28} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/amanjat/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-hero-secondary transition-colors duration-300 tech-icon"
@@ -91,7 +91,7 @@ const Hero = () => {
               <Linkedin size={28} />
             </a>
             <a
-              href="mailto:alex@example.com"
+              href="mailto:amanjat261@gmail.com"
               className="text-white hover:text-hero-secondary transition-colors duration-300 tech-icon"
             >
               <Mail size={28} />

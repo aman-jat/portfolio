@@ -49,19 +49,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'alex@example.com',
-      href: 'mailto:alex@example.com',
+      value: 'amanjat261@gmail.com',
+      href: 'mailto:amanjat261@gmail.com',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+91 (626) 058-2059',
+      href: 'tel:+916260582059',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Indore, India',
       href: 'https://maps.google.com',
     },
   ];
@@ -70,13 +70,13 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com',
+      href: 'https://github.com/aman-jat',
       color: 'hover:text-gray-900',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com',
+      href: 'https://www.linkedin.com/in/amanjat/',
       color: 'hover:text-blue-600',
     },
     {

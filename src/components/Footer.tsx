@@ -6,17 +6,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: 'https://github.com',
+      href: 'https://github.com/aman-jat',
       label: 'GitHub',
     },
     {
       icon: Linkedin,
-      href: 'https://linkedin.com',
+      href: 'https://www.linkedin.com/in/amanjat/',
       label: 'LinkedIn',
     },
     {
       icon: Mail,
-      href: 'mailto:alex@example.com',
+      href: 'mailto:amanjat261@gmail.com',
       label: 'Email',
     },
   ];
@@ -70,9 +70,9 @@ const Footer = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Get In Touch</h3>
               <div className="space-y-2 text-background/80">
-                <p>San Francisco, CA</p>
-                <p>alex@example.com</p>
-                <p>+1 (555) 123-4567</p>
+                <p>Indore, India, CA</p>
+                <p>amanjat261@gmail.com</p>
+                <p>+91 (626) 058-2059</p>
               </div>
               <div className="flex space-x-4 pt-2">
                 {socialLinks.map((social, index) => (
