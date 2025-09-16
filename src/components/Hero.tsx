@@ -22,7 +22,7 @@ const Hero = () => {
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${heroBackground})`,
+        // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -36,10 +36,10 @@ const Hero = () => {
         >
           {/* Introduction */}
           <div className="mb-6">
-            <p className="text-lg sm:text-xl text-white/90 font-medium mb-2 animate-fade-in">
+            <p className="text-lg sm:text-xl text-black/70 font-medium mb-2 animate-fade-in">
               Hello, I'm
             </p>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 animate-slide-up">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-black/90 mb-4 animate-slide-up">
               Aman Jat
             </h1>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gradient mb-6 animate-slide-up">
@@ -48,7 +48,7 @@ const Hero = () => {
           </div>
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-in">
+          <p className="text-lg sm:text-xl text-black/50 max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-in">
             Passionate software engineer with 5+ years of experience in MERN and MEAN stack development. 
             I specialize in creating responsive web applications with clean, modern designs and exceptional user experiences.
           </p>
@@ -66,7 +66,7 @@ const Hero = () => {
               onClick={() => scrollToSection('contact')}
               variant="outline"
               size="lg"
-              className="border-white text-grey hover:bg-white hover:text-foreground hover-glow px-8 py-3 rounded-full transition-all duration-300"
+              className="border-white text-grey bg-white/90 hover:bg-white hover:text-foreground hover-glow px-8 py-3 rounded-full transition-all duration-300"
             >
               Get In Touch
             </Button>
