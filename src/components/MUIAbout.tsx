@@ -3,7 +3,7 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
+  Stack,
   Card,
   CardContent,
   Fade,
@@ -148,9 +148,9 @@ const MUIAbout: React.FC = () => {
           </Box>
         </Fade>
 
-        <Grid container spacing={6}>
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} sx={{ alignItems: 'flex-start' }}>
           {/* Journey Section */}
-          <Grid item xs={12} md={6}>
+          <Box sx={{ flex: 1 }}>
             <Fade in={isVisible} timeout={1200}>
               <Box>
                 <Typography
@@ -209,10 +209,10 @@ const MUIAbout: React.FC = () => {
                 </Box>
               </Box>
             </Fade>
-          </Grid>
+          </Box>
 
           {/* Highlights Grid */}
-          <Grid item xs={12} md={6}>
+          <Box sx={{ flex: 1 }}>
             <Fade in={isVisible} timeout={1500}>
               <Typography
                 variant="h4"
@@ -225,75 +225,80 @@ const MUIAbout: React.FC = () => {
                 What I Bring
               </Typography>
             </Fade>
-            <Grid container spacing={3}>
+            <Box 
+              sx={{ 
+                display: 'grid', 
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, 
+                gap: 3 
+              }}
+            >
               {highlights.map((highlight, index) => (
-                <Grid item xs={12} sm={6} key={highlight.title}>
-                  <Grow
-                    in={isVisible}
-                    timeout={1800 + index * 200}
+                <Grow
+                  key={highlight.title}
+                  in={isVisible}
+                  timeout={1800 + index * 200}
+                >
+                  <Card
+                    sx={{
+                      height: '100%',
+                      background: theme.palette.mode === 'dark'
+                        ? 'rgba(28, 28, 30, 0.6)'
+                        : 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(20px)',
+                      border: '1px solid',
+                      borderColor: theme.palette.mode === 'dark'
+                        ? 'rgba(255, 255, 255, 0.1)'
+                        : 'rgba(0, 0, 0, 0.08)',
+                      borderRadius: 3,
+                      transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                      '&:hover': {
+                        transform: 'translateY(-8px) scale(1.02)',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 20px 40px rgba(0, 0, 0, 0.4)'
+                          : '0 20px 40px rgba(0, 0, 0, 0.15)',
+                        borderColor: 'primary.main',
+                      },
+                    }}
                   >
-                    <Card
-                      sx={{
-                        height: '100%',
-                        background: theme.palette.mode === 'dark'
-                          ? 'rgba(28, 28, 30, 0.6)'
-                          : 'rgba(255, 255, 255, 0.8)',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid',
-                        borderColor: theme.palette.mode === 'dark'
-                          ? 'rgba(255, 255, 255, 0.1)'
-                          : 'rgba(0, 0, 0, 0.08)',
-                        borderRadius: 3,
-                        transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                        '&:hover': {
-                          transform: 'translateY(-8px) scale(1.02)',
-                          boxShadow: theme.palette.mode === 'dark'
-                            ? '0 20px 40px rgba(0, 0, 0, 0.4)'
-                            : '0 20px 40px rgba(0, 0, 0, 0.15)',
-                          borderColor: 'primary.main',
-                        },
-                      }}
-                    >
-                      <CardContent sx={{ p: 3, textAlign: 'center' }}>
-                        <Box
-                          sx={{
-                            color: 'primary.main',
-                            mb: 2,
-                            transition: 'all 0.3s ease',
-                            '&:hover': {
-                              transform: 'scale(1.1) rotate(5deg)',
-                            },
-                          }}
-                        >
-                          {highlight.icon}
-                        </Box>
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            mb: 1.5,
-                            fontWeight: 600,
-                            color: 'text.primary',
-                          }}
-                        >
-                          {highlight.title}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            color: 'text.secondary',
-                            lineHeight: 1.6,
-                          }}
-                        >
-                          {highlight.description}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </Grow>
-                </Grid>
+                    <CardContent sx={{ p: 3, textAlign: 'center' }}>
+                      <Box
+                        sx={{
+                          color: 'primary.main',
+                          mb: 2,
+                          transition: 'all 0.3s ease',
+                          '&:hover': {
+                            transform: 'scale(1.1) rotate(5deg)',
+                          },
+                        }}
+                      >
+                        {highlight.icon}
+                      </Box>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          mb: 1.5,
+                          fontWeight: 600,
+                          color: 'text.primary',
+                        }}
+                      >
+                        {highlight.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: 'text.secondary',
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {highlight.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grow>
               ))}
-            </Grid>
-          </Grid>
-        </Grid>
+            </Box>
+          </Box>
+        </Stack>
       </Container>
     </Box>
   );

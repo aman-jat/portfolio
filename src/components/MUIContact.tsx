@@ -196,9 +196,9 @@ const MUIContact: React.FC = () => {
           </Box>
         </Fade>
 
-        <Grid container spacing={6}>
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} sx={{ alignItems: 'flex-start' }}>
           {/* Contact Information */}
-          <Grid item xs={12} md={5}>
+          <Box sx={{ flex: { xs: 1, md: '0 0 40%' } }}>
             <Fade in={isVisible} timeout={1200}>
               <Box>
                 <Typography
@@ -331,10 +331,10 @@ const MUIContact: React.FC = () => {
                 </Fade>
               </Box>
             </Fade>
-          </Grid>
+          </Box>
 
           {/* Contact Form */}
-          <Grid item xs={12} md={7}>
+          <Box sx={{ flex: 1 }}>
             <Grow in={isVisible} timeout={1500}>
               <Card
                 sx={{
@@ -362,8 +362,6 @@ const MUIContact: React.FC = () => {
                   </Typography>
                   
                   <Box component="form" onSubmit={handleSubmit}>
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           label="Your Name"
@@ -393,8 +391,7 @@ const MUIContact: React.FC = () => {
                             },
                           }}
                         />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
+                      
                         <TextField
                           fullWidth
                           label="Email Address"
@@ -425,8 +422,6 @@ const MUIContact: React.FC = () => {
                             },
                           }}
                         />
-                      </Grid>
-                      <Grid item xs={12}>
                         <TextField
                           fullWidth
                           label="Subject"
@@ -456,8 +451,6 @@ const MUIContact: React.FC = () => {
                             },
                           }}
                         />
-                      </Grid>
-                      <Grid item xs={12}>
                         <TextField
                           fullWidth
                           multiline
@@ -482,8 +475,7 @@ const MUIContact: React.FC = () => {
                             },
                           }}
                         />
-                      </Grid>
-                      <Grid item xs={12}>
+                      
                         <Button
                           type="submit"
                           variant="contained"
@@ -504,14 +496,12 @@ const MUIContact: React.FC = () => {
                         >
                           Send Message
                         </Button>
-                      </Grid>
-                    </Grid>
                   </Box>
-                </CardContent>
-              </Card>
-            </Grow>
-          </Grid>
-        </Grid>
+                 </CardContent>
+               </Card>
+             </Grow>
+           </Box>
+         </Stack>
       </Container>
     </Box>
   );

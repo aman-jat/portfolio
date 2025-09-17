@@ -169,9 +169,9 @@ const MUISkills: React.FC = () => {
           </Box>
         </Fade>
 
-        <Grid container spacing={4}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }, gap: 4 }}>
           {skillCategories.map((category, index) => (
-            <Grid item xs={12} md={6} lg={4} key={category.title}>
+            <Box key={category.title}>
               <Grow
                 in={isVisible}
                 timeout={1000 + index * 200}
@@ -273,9 +273,9 @@ const MUISkills: React.FC = () => {
                   </CardContent>
                 </Card>
               </Grow>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );

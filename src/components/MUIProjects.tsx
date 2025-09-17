@@ -151,9 +151,9 @@ const MUIProjects: React.FC = () => {
           </Box>
         </Fade>
 
-        <Grid container spacing={4}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(auto-fit, minmax(500px, 1fr))' }, gap: 4 }}>
           {projects.map((project, index) => (
-            <Grid item xs={12} md={project.featured ? 12 : 6} key={project.title}>
+            <Box key={project.title}>
               <Grow
                 in={isVisible}
                 timeout={1200 + index * 300}
@@ -332,9 +332,9 @@ const MUIProjects: React.FC = () => {
                   </CardContent>
                 </Card>
               </Grow>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
 
         <Fade in={isVisible} timeout={2000}>
           <Box sx={{ textAlign: 'center', mt: 8 }}>
