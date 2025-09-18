@@ -11,14 +11,14 @@ const Index = () => {
   useEffect(() => {
     // Smooth scrolling for anchor links in the whole document
     document.documentElement.style.scrollBehavior = 'smooth';
-    
+
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className='min-h-screen bg-background font-zalando'>
       <Navigation />
       <main>
         <Hero />

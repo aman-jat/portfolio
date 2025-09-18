@@ -35,25 +35,21 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-sm shadow-soft border-b border-border'
+          ? 'bg-background/50 backdrop-blur-sm shadow-soft '
           : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+      }`}>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='flex justify-between items-center py-4'>
           {/* Logo */}
-          <div className="text-xl font-bold text-gradient">
-            Portfolio
-          </div>
+          <div className='text-xl font-bold text-gradient'>Portfolio</div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
+          <div className='hidden md:flex space-x-8'>
+            {navItems.map(item => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-white hover:text-hero-primary transition-colors duration-200 font-medium"
-              >
+                className='text-gray-800 hover:text-hero-primary transition-colors duration-200 font-medium'>
                 {item.label}
               </button>
             ))}
@@ -61,25 +57,23 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
+            variant='ghost'
+            size='icon'
+            className='md:hidden'
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
+          <div className='md:hidden pb-4'>
+            <div className='flex flex-col space-y-2'>
+              {navItems.map(item => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-left px-4 py-2 text-foreground hover:text-hero-primary hover:bg-accent rounded-lg transition-colors duration-200"
-                >
+                  className='text-left px-4 py-2 text-foreground hover:text-hero-primary hover:bg-accent rounded-lg transition-colors duration-200'>
                   {item.label}
                 </button>
               ))}

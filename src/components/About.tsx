@@ -37,7 +37,8 @@ const About = () => {
     {
       icon: Lightbulb,
       title: 'Problem Solver',
-      description: 'Passionate about finding elegant solutions to complex challenges',
+      description:
+        'Passionate about finding elegant solutions to complex challenges',
     },
     {
       icon: Coffee,
@@ -47,61 +48,67 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-accent/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id='about' ref={sectionRef} className='py-20 bg-accent/50'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div
           className={`max-w-6xl mx-auto transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+          }`}>
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              About <span className="text-gradient">Me</span>
+          <div className='text-center mb-16'>
+            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-4'>
+              About <span className='text-gradient'>Me</span>
             </h2>
-            <div className="w-24 h-1 hero-gradient mx-auto rounded-full mb-8"></div>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              I'm a passionate full-stack developer who loves turning ideas into reality through clean, 
-              efficient code and beautiful user interfaces.
+            <div className='w-24 h-1 hero-gradient mx-auto rounded-full mb-8'></div>
+            <p className='text-lg text-muted-foreground max-w-3xl mx-auto'>
+              I'm a passionate full-stack developer who loves turning ideas into
+              reality through clean, efficient code and beautiful user
+              interfaces.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className='grid lg:grid-cols-2 gap-12 items-center'>
             {/* Content */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold mb-4">My Journey</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                With over 5 years of experience in software development, I've had the privilege of working 
-                on diverse projects ranging from e-commerce platforms to complex dashboard applications. 
-                My expertise spans the full development stack, with a particular focus on frontend technologies.
+            <div className='space-y-6'>
+              <h3 className='text-2xl font-semibold mb-4'>My Journey</h3>
+              <p className='text-muted-foreground leading-relaxed'>
+                With over 5 years of experience in software development, I've
+                had the privilege of working on diverse projects ranging from
+                e-commerce platforms to complex dashboard applications. My
+                expertise spans the full development stack, with a particular
+                focus on frontend technologies.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                I specialize in the MERN and MEAN stack, creating responsive, user-friendly applications 
-                that provide exceptional user experiences. My approach combines technical expertise with 
-                creative problem-solving to deliver solutions that meet both user needs and business objectives.
+              <p className='text-muted-foreground leading-relaxed'>
+                I specialize in the MERN and MEAN stack, creating responsive,
+                user-friendly applications that provide exceptional user
+                experiences. My approach combines technical expertise with
+                creative problem-solving to deliver solutions that meet both
+                user needs and business objectives.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
-                projects, or sharing knowledge with the developer community.
+              <p className='text-muted-foreground leading-relaxed'>
+                When I'm not coding, you'll find me exploring new technologies,
+                contributing to open-source projects, or sharing knowledge with
+                the developer community.
               </p>
             </div>
 
             {/* Highlights Grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className='grid sm:grid-cols-2 gap-6'>
               {highlights.map((highlight, index) => (
                 <Card
                   key={index}
                   className={`card-gradient border-0 shadow-soft hover-lift transition-all duration-300 ${
                     isVisible ? 'animate-scale-in' : ''
                   }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-6 text-center">
-                    <div className="hero-gradient w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <highlight.icon className="w-6 h-6 text-white" />
+                  style={{ animationDelay: `${index * 0.1}s` }}>
+                  <CardContent className='p-6 text-center'>
+                    <div className='hero-gradient w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4'>
+                      <highlight.icon className='w-6 h-6 text-white' />
                     </div>
-                    <h4 className="font-semibold mb-2">{highlight.title}</h4>
-                    <p className="text-sm text-muted-foreground">{highlight.description}</p>
+                    <h4 className='font-semibold mb-2'>{highlight.title}</h4>
+                    <p className='text-sm text-muted-foreground'>
+                      {highlight.description}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
