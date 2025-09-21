@@ -3,7 +3,7 @@ import { Code, Database, Server, Settings } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 import php from '../assets/images/php.png';
-import mui from '../assets/images/mui.png';
+import mui from '../assets/images/material-ui.png';
 
 import git from '../assets/images/git.png';
 import html from '../assets/images/html.png';
