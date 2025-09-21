@@ -30,6 +30,14 @@ import postgreSQL from '../assets/images/postgres.png';
 import playwright from '../assets/images/playwright.svg';
 import androidStudio from '../assets/images/android-studio.png';
 import reactTestingLibrary from '../assets/images/react-testing-library.png';
+
+import sleeksky from '../assets/organizations/sleeksky.svg';
+import exxat from '../assets/organizations/exxat.svg';
+import techdome from '../assets/organizations/techdome.svg';
+import numadic from '../assets/organizations/numadic.svg';
+import cibirix from '../assets/organizations/cibirix.svg';
+import sensei from '../assets/organizations/sensei.svg';
+
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -184,25 +192,30 @@ const Skills = () => {
           </div>
 
           {/* Additional Tech Stack Icons */}
-          {/* <div className='mt-16 text-center '>
+          <div className='mt-16 text-center '>
             <h3 className='text-xl font-semibold mb-8'>
-              Technologies I Work With
+              Organizations I Work With
             </h3>
             <div className='flex flex-wrap justify-center items-center gap-8 opacity-60'>
-              {['⚛️', '🅰️', '💚', '🐍', '🍃', '🔥', '☁️', '🐳', '📦', '🎨'].map(
-                (icon, index) => (
-                  <div
-                    key={index}
-                    className={`text-4xl tech-icon transition-all duration-300 ${
-                      isVisible ? 'animate-bounce-in' : ''
-                    }`}
-                    style={{ animationDelay: `${index * 0.1}s` }}>
-                    {icon}
-                  </div>
-                )
-              )}
+              {[
+                { icon: sleeksky, className: 'h-6' },
+                { icon: exxat, className: 'h-6' },
+                { icon: techdome, className: 'h-6' },
+                { icon: numadic, className: 'h-8' },
+                { icon: cibirix, className: 'h-8' },
+                { icon: sensei, className: 'h-8' },
+              ].map((org, index) => (
+                <div
+                  key={index}
+                  className={`text-4xl tech-icon transition-all duration-300 ${
+                    isVisible ? 'animate-bounce-in' : ''
+                  }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}>
+                  <img src={org.icon} alt='React' className={org.className} />
+                </div>
+              ))}
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </section>
