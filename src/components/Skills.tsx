@@ -1,17 +1,35 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  Code,
-  Database,
-  Globe,
-  Smartphone,
-  Server,
-  GitBranch,
-  Palette,
-  Settings,
-} from 'lucide-react';
+import { Code, Database, Server, Settings } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import react from '../assets/images/react.png';
 
+import php from '../assets/images/php.png';
+import mui from '../assets/images/mui.png';
+import git from '../assets/images/git.png';
+import html from '../assets/images/html.png';
+import next from '../assets/images/next.png';
+import jest from '../assets/images/jest.png';
+import react from '../assets/images/react.png';
+import nodejs from '../assets/images/node.png';
+import mysql from '../assets/images/mysql.png';
+import redux from '../assets/images/redux.png';
+import github from '../assets/images/github.png';
+import typescript from '../assets/images/ts.png';
+import python from '../assets/images/python.png';
+import vitest from '../assets/images/vitest.png';
+import postman from '../assets/images/postman.png';
+import angular from '../assets/images/angular.png';
+import mongodb from '../assets/images/mongodb.png';
+import graphql from '../assets/images/graphql.png';
+import express from '../assets/images/express.png';
+import fastAPI from '../assets/images/fastapi.png';
+import laravel from '../assets/images/laravel.png';
+import tailwind from '../assets/images/tailwind.png';
+import firebase from '../assets/images/firebase.png';
+import sequelize from '../assets/images/sequelize.png';
+import postgreSQL from '../assets/images/postgres.png';
+import playwright from '../assets/images/playwright.svg';
+import androidStudio from '../assets/images/android-studio.png';
+import reactTestingLibrary from '../assets/images/react-testing-library.png';
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,48 +56,52 @@ const Skills = () => {
       title: 'Frontend Development',
       icon: Code,
       skills: [
+        { name: 'Next.js', level: 95, icon: next },
         { name: 'React.js', level: 95, icon: react },
-        { name: 'Angular', level: 90, icon: '🅰️' },
-        { name: 'TypeScript', level: 92, icon: '📘' },
-        { name: 'JavaScript', level: 95, icon: '🟨' },
-        { name: 'HTML5/CSS3', level: 95, icon: '🎨' },
-        { name: 'Tailwind CSS', level: 88, icon: '💨' },
+        { name: 'Redux/RTK', level: 88, icon: redux },
+        { name: 'Angular', level: 80, icon: angular },
+        { name: 'TypeScript/Javascript', level: 95, icon: typescript },
+        { name: 'HTML5/CSS3', level: 95, icon: html },
+        { name: 'Tailwind CSS', level: 88, icon: tailwind },
+        { name: 'Material UI', level: 88, icon: mui },
       ],
     },
     {
       title: 'Backend Development',
       icon: Server,
       skills: [
-        { name: 'Node.js', level: 90, icon: '💚' },
-        { name: 'Express.js', level: 88, icon: '🚄' },
-        { name: 'Python', level: 85, icon: '🐍' },
-        { name: 'REST APIs', level: 92, icon: '📡' },
-        { name: 'GraphQL', level: 80, icon: '⚡' },
-        { name: 'Socket.io', level: 82, icon: '🔌' },
+        { name: 'Node.js', level: 90, icon: nodejs },
+        { name: 'Express.js', level: 88, icon: express },
+        { name: 'Python', level: 85, icon: python },
+        { name: 'Fast API', level: 92, icon: fastAPI },
+        { name: 'PHP', level: 92, icon: php },
+        { name: 'Laravel', level: 92, icon: laravel },
+        { name: 'GraphQL', level: 80, icon: graphql },
+        { name: 'Sequelize', level: 80, icon: sequelize },
       ],
     },
     {
       title: 'Database & Cloud',
       icon: Database,
       skills: [
-        { name: 'MongoDB', level: 90, icon: '🍃' },
-        { name: 'MySQL', level: 85, icon: '🐬' },
-        { name: 'PostgreSQL', level: 82, icon: '🐘' },
-        { name: 'AWS', level: 78, icon: '☁️' },
-        { name: 'Firebase', level: 85, icon: '🔥' },
-        { name: 'Redis', level: 75, icon: '🔴' },
+        { name: 'MongoDB', level: 90, icon: mongodb },
+        { name: 'MySQL', level: 85, icon: mysql },
+        { name: 'PostgreSQL', level: 82, icon: postgreSQL },
+        { name: 'Firebase', level: 70, icon: firebase },
       ],
     },
     {
       title: 'Tools & Others',
       icon: Settings,
       skills: [
-        { name: 'Git/GitHub', level: 92, icon: '📦' },
-        { name: 'Docker', level: 80, icon: '🐳' },
-        { name: 'Jest/Testing', level: 85, icon: '🧪' },
-        { name: 'Webpack', level: 82, icon: '📦' },
-        { name: 'Figma', level: 85, icon: '🎨' },
-        { name: 'Agile/Scrum', level: 90, icon: '🏃' },
+        { name: 'Git', level: 92, icon: git },
+        { name: 'GitHub', level: 80, icon: github },
+        { name: 'Jest/Testing', level: 85, icon: jest },
+        { name: 'Vitest', level: 82, icon: vitest },
+        { name: 'React Testing Library', level: 80, icon: reactTestingLibrary },
+        { name: 'Playwright', level: 80, icon: playwright },
+        { name: 'postman', level: 85, icon: postman },
+        { name: 'Android Studio', level: 80, icon: androidStudio },
       ],
     },
   ];
@@ -133,12 +155,8 @@ const Skills = () => {
                       }}>
                       <div className='flex items-center justify-between mb-2'>
                         <div className='flex items-center space-x-2'>
-                          <span className='text-lg'>
-                            <img
-                              src={skill.icon}
-                              alt='React'
-                              className='w-6 h-6'
-                            />
+                          <span className='text-lg '>
+                            <img src={skill.icon} alt='React' className='w-6' />
                           </span>
                           <span className='text-sm font-medium'>
                             {skill.name}
@@ -166,7 +184,7 @@ const Skills = () => {
           </div>
 
           {/* Additional Tech Stack Icons */}
-          <div className='mt-16 text-center'>
+          {/* <div className='mt-16 text-center '>
             <h3 className='text-xl font-semibold mb-8'>
               Technologies I Work With
             </h3>
@@ -184,7 +202,7 @@ const Skills = () => {
                 )
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
