@@ -51,7 +51,7 @@ const FeaturedProjects = () => {
     },
   ];
 
-  const featuredProjects = projects.filter(p => p.isFeatured);
+  const featuredProjects = projects.filter(p => p.isFeatured).slice(0, 3);
 
   return (
     <section

@@ -17,158 +17,24 @@ import joke from './assets/thumnail/joke.png';
 import panfila from './assets/thumnail/panfila.png';
 import iea from './assets/thumnail/iea.png';
 import anderg from './assets/thumnail/anderg.png';
+import golens from './assets/thumnail/golens.png';
 
 export const projects: Project[] = [
-  // HTML CSS
-  // {
-  //   id: 1,
-  //   priority: 505,
-  //   startedOn: "Sep 23, 2024",
-  //   title: "Panfila Clone Website",
-  //   description:
-  //     "A responsive Panfila Global Solutions website clone built with HTML and CSS, showcasing clean UI design.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image:
-  //     panfila,
-  //   githubUrl: "https://github.com/pooja-jat/panfila-clone-website",
-  //   liveUrl: "https://pooja-jat.github.io/panfila-clone-website/",
-  // },
-  // {
-  //   id: 2,
-  //   priority: 500,
-  //   startedOn: "Sep 27, 2024",
-  //   title: "Whatsapp clone",
-  //   description:
-  //     "A responsive WhatsApp Web clone showcasing frontend skills with HTML and CSS, and dynamic UI.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image: whatsapp,
-  //   githubUrl: "https://github.com/pooja-jat/whatsapp-clone",
-  //   liveUrl: "https://pooja-jat.github.io/whatsapp-clone/",
-  // },
-  // {
-  //   id: 3,
-  //   priority: 501,
-  //   startedOn: "Oct 4, 2024",
-  //   title: "Starbucks clone",
-  //   description:
-  //     "A responsive Starbucks landing page clone built with HTML, CSS, and JavaScript, showcasing UI/UX design skills.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image: starbucks,
-  //   githubUrl: "https://github.com/pooja-jat/starbucks",
-  //   liveUrl: "https://pooja-jat.github.io/starbucks/",
-  // },
-  // {
-  //   id: 4,
-  //   priority: 503,
-  //   startedOn: "Oct 11, 2024",
-  //   title: "Energy",
-  //   description:
-  //     "A modern, responsive energy-themed website showcasing frontend development skills and interactive UI design.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image: energy,
-  //   githubUrl: "https://github.com/pooja-jat/Energy",
-  //   liveUrl: "https://pooja-jat.github.io/Energy/",
-  // },
-  // {
-  //   id: 5,
-  //   priority: 504,
-  //   startedOn: "Oct 15, 2024",
-  //   title: "Event Planner",
-  //   description:
-  //     "A responsive event management website built with HTML and CSS showcasing event planning services like weddings, corporate parties, and private celebrations. Includes service listings, contact information, and location details for booking and inquiries.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image: eventplanner,
-  //   githubUrl: "https://github.com/pooja-jat/Event-planner",
-  //   liveUrl: "https://pooja-jat.github.io/Event-planner/",
-  // },
-  // {
-  //   id: 6,
-  //   priority: 507,
-  //   startedOn: "Oct 21, 2024",
-  //   title: "IEA Clone",
-  //   description:
-  //     "The IEA website clone showcases global energy insights with interactive sections for news, reports, and data. Built using HTML, CSS, and JavaScript, it highlights clean energy trends and country-level statistics.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image: iea,
-  //   githubUrl: "https://github.com/pooja-jat/IEA",
-  //   liveUrl: "https://pooja-jat.github.io/IEA/",
-  // },
-  // {
-  //   id: 7,
-  //   priority: 506,
-  //   startedOn: "Oct 21, 2024",
-  //   title: "Zerodha Clone",
-  //   description:
-  //     "A responsive web app emulating Zerodha’s trading interface, featuring market charts, order forms, and portfolio tracking. Built with HTML, CSS, and JavaScript to demonstrate UI/UX skills.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image: zerodha,
-  //   githubUrl: "https://github.com/pooja-jat/zerodha",
-  //   liveUrl: "https://pooja-jat.github.io/zerodha/",
-  // },
-  // {
-  //   id: 8,
-  //   priority: 502,
-  //   startedOn: "Oct 23, 2024",
-  //   title: "Ander G",
-  //   description:
-  //     "A responsive golf resort website demonstrating frontend development skills with modern UI/UX design.",
-  //   category: ["html/css"],
-  //   technologies: ["HTML", "CSS"],
-  //   image:
-  //     anderg,
-  //   githubUrl: "https://github.com/pooja-jat/ander-G",
-  //   liveUrl: "https://pooja-jat.github.io/ander-G/",
-  // },
-
-  // // JS Projects
-  // {
-  //   id: 9,
-  //   startedOn: "Feb 6, 2025",
-  //   title: "Temperature converter",
-  //   priority: 152,
-  //   description:
-  //     "A dynamic temperature converter web app demonstrating JavaScript logic, DOM manipulation, and interactive UI.",
-  //   category: ["javaScript"],
-  //   technologies: ["Javascript", "HTML", "CSS"],
-  //   image: temperature,
-  //   githubUrl: "https://github.com/pooja-jat/Temperature",
-  //   liveUrl: "https://pooja-jat.github.io/Temperature/",
-  // },
-  // {
-  //   id: 10,
-  //   startedOn: "Feb 17, 2025",
-  //   title: "Joke Generator",
-  //   priority: 151,
-  //   description:
-  //     "A dynamic web app fetching random jokes via API, showcasing JavaScript, DOM manipulation, and async operations.",
-  //   category: ["javaScript"],
-  //   technologies: ["Javascript", "RestAPI", "HTML", "CSS"],
-  //   image: joke,
-  //   githubUrl: "https://github.com/pooja-jat/Random-jokes",
-  //   liveUrl: "https://pooja-jat.github.io/Random-jokes/",
-  // },
-  // {
-  //   id: 11,
-  //   startedOn: "Feb 18, 2025",
-  //   title: "Weather App",
-  //   priority: 106,
-  //   description:
-  //     "A modern weather dashboard fetching real-time data via API, showcasing JavaScript and dynamic UI skills.",
-  //   category: ["javaScript"],
-  //   technologies: ["Javascript", "RestAPI", "HTML", "CSS"],
-  //   image: weather,
-  //   githubUrl: "https://pooja-jat.github.io/Weather-UI/",
-  //   liveUrl: "https://pooja-jat.github.io/Weather-UI/",
-  // },
-
   // React Project
+  {
+    id: 1,
+    startedOn: 'Mar 7, 2022',
+    title: 'Golens',
+    priority: 1,
+    isFeatured: true,
+    description:
+      'Ecommerce website for Golens, a company specializing in high-quality, durable, and stylish glasses. Built with React, Tailwind CSS, and integrated with Stripe for secure payments.',
+    category: ['react'],
+    technologies: ['React', 'Javascript', 'HTML', 'CSS'],
+    image: golens,
+    githubUrl: 'https://github.com/pooja-jat/Todo-UI',
+    liveUrl: 'https://golens.vercel.app/',
+  },
   {
     id: 12,
     startedOn: 'Mar 26, 2025',
