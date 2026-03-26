@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -38,7 +40,7 @@ const Footer = () => {
                 className='text-2xl font-bold text-gradient hover:opacity-80 transition-opacity duration-300'>
                 Aman Jat
               </button>
-              <p className='text-background/80 leading-relaxed'>
+              <p className='text-background/80 leading-relaxed text-sm md:text-lg'>
                 Full-stack developer passionate about creating exceptional
                 digital experiences through clean code and innovative solutions.
               </p>
@@ -48,23 +50,22 @@ const Footer = () => {
             <div className='space-y-4'>
               <h3 className='text-lg font-semibold'>Quick Links</h3>
               <div className='space-y-2'>
-                {[
-                  'About',
-                  'Skills',
-                  // 'Projects',
-                  'Contact',
-                ].map(item => (
+                {['About', 'Projects', 'Skills', 'Contact'].map(item => (
                   <button
                     key={item}
                     onClick={() => {
+                      if (item === 'Projects') {
+                        navigate('/projects');
+                        return;
+                      }
                       const element = document.getElementById(
-                        item.toLowerCase()
+                        item.toLowerCase(),
                       );
                       if (element) {
                         element.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
-                    className='block text-background/80 hover:text-background transition-colors duration-300'>
+                    className='text-sm md:text-lg block text-background/80 hover:text-background transition-colors duration-300 hover:underline underline-offset-4'>
                     {item}
                   </button>
                 ))}
@@ -75,9 +76,9 @@ const Footer = () => {
             <div className='space-y-4'>
               <h3 className='text-lg font-semibold'>Get In Touch</h3>
               <div className='space-y-2 text-background/80'>
-                <p>Indore, India, CA</p>
-                <p>amanjat261@gmail.com</p>
-                <p>+91 (626) 058-2059</p>
+                <p className='text-sm md:text-lg'>Indore, India</p>
+                <p className='text-sm md:text-lg'>amanjat261@gmail.com</p>
+                <p className='text-sm md:text-lg'>+91 6260-5820-59</p>
               </div>
               <div className='flex space-x-4 pt-2'>
                 {socialLinks.map((social, index) => (

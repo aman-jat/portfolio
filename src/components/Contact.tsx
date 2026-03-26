@@ -21,6 +21,48 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
 
+const contactInfo = [
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'amanjat261@gmail.com',
+    href: 'mailto:amanjat261@gmail.com',
+  },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: '+91 6260-5820-59',
+    href: 'tel:+916260582059',
+  },
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: 'Indore, India',
+    href: 'https://maps.google.com',
+  },
+];
+
+const socialLinks = [
+  {
+    icon: Github,
+    label: 'GitHub',
+    href: 'https://github.com/aman-jat',
+    color: 'hover:text-gray-900',
+  },
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/amanjat/',
+    color: 'hover:text-blue-600',
+  },
+  {
+    icon: Twitter,
+    label: 'Twitter',
+    href: 'https://twitter.com',
+    color: 'hover:text-blue-400',
+  },
+];
+
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,13 +75,11 @@ const Contact = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
-
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => observer.disconnect();
   }, []);
 
@@ -47,74 +87,59 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get('firstName');
+    const lastName = formData.get('lastName');
+    const email = formData.get('email');
+    const message = formData.get('message');
 
-    toast({
-      title: 'Message sent successfully!',
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+    const url = 'https://portfolio-backend-3rmg.onrender.com/api/users';
+    // const url = "http://localhost:5000/api/users";
 
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    try {
+      // post method
+      await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          message,
+        }),
+      });
+      toast({
+        title: 'Message sent successfully!',
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.log('error', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'amanjat261@gmail.com',
-      href: 'mailto:amanjat261@gmail.com',
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: '+91 (626) 058-2059',
-      href: 'tel:+916260582059',
-    },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: 'Indore, India',
-      href: 'https://maps.google.com',
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: 'GitHub',
-      href: 'https://github.com/aman-jat',
-      color: 'hover:text-gray-900',
-    },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/amanjat/',
-      color: 'hover:text-blue-600',
-    },
-    {
-      icon: Twitter,
-      label: 'Twitter',
-      href: 'https://twitter.com',
-      color: 'hover:text-blue-400',
-    },
-  ];
-
   return (
-    <section id='contact' ref={sectionRef} className='py-20 bg-background'>
+    <section
+      id='contact'
+      ref={sectionRef}
+      className='py-8 md:py-16 bg-background'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div
           className={`max-w-6xl mx-auto transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
           {/* Section Header */}
-          <div className='text-center mb-16'>
+          <div className='text-center mb-8 md:mb-16'>
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-4'>
               Get In <span className='text-gradient'>Touch</span>
             </h2>
-            <div className='w-24 h-1 hero-gradient mx-auto rounded-full mb-8'></div>
-            <p className='text-lg text-muted-foreground max-w-3xl mx-auto'>
+            <div className='w-24 h-1 hero-gradient mx-auto rounded-full mb-4 md:mb-8'></div>
+            <p className='text-sm md:text-lg text-muted-foreground max-w-3xl mx-auto'>
               I'm always interested in new opportunities and exciting projects.
               Let's discuss how we can work together to bring your ideas to
               life.
@@ -130,8 +155,10 @@ const Contact = () => {
                   : 'opacity-0 -translate-x-10'
               }`}>
               <div>
-                <h3 className='text-2xl font-semibold mb-6'>Let's Connect</h3>
-                <p className='text-muted-foreground leading-relaxed mb-8'>
+                <h3 className='text-xl md:text-2xl font-semibold mb-4 md:mb-6'>
+                  Let's Connect
+                </h3>
+                <p className='text-sm md:text-lg text-muted-foreground leading-relaxed mb-8'>
                   Whether you're looking for a developer to join your team, need
                   help with a project, or just want to chat about technology,
                   I'd love to hear from you.
@@ -175,7 +202,7 @@ const Contact = () => {
               </div>
 
               {/* Social Links */}
-              <div className='pt-8'>
+              <div className='md:pt-8 hidden md:visible'>
                 <h4 className='text-lg font-semibold mb-4'>Follow Me</h4>
                 <div className='flex space-x-4'>
                   {socialLinks.map((social, index) => (
@@ -195,10 +222,8 @@ const Contact = () => {
 
             {/* Contact Form */}
             <Card
-              className={`card-gradient border-0 shadow-medium transition-all duration-700 ${
-                isVisible
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 translate-x-10'
+              className={`card-gradient border-0 md:shadow-medium transition-all duration-700 ${
+                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 '
               }`}>
               <CardHeader>
                 <CardTitle className='text-xl'>Send a Message</CardTitle>
@@ -215,7 +240,6 @@ const Contact = () => {
                       <Input
                         id='firstName'
                         name='firstName'
-                        required
                         className='transition-all duration-300 focus:shadow-soft'
                       />
                     </div>
@@ -224,7 +248,6 @@ const Contact = () => {
                       <Input
                         id='lastName'
                         name='lastName'
-                        required
                         className='transition-all duration-300 focus:shadow-soft'
                       />
                     </div>
@@ -236,7 +259,6 @@ const Contact = () => {
                       id='email'
                       name='email'
                       type='email'
-                      required
                       className='transition-all duration-300 focus:shadow-soft'
                     />
                   </div>
