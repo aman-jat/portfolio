@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { ExternalLink, Github, Code, Smartphone, Globe } from 'lucide-react';
+import { ExternalLink, Code, Smartphone, Globe } from 'lucide-react';
+import GithubIcon from '@/components/ui/GithubIcon';
 import {
   Card,
   CardContent,
@@ -233,7 +234,7 @@ const Projects = () => {
                             target='_blank'
                             rel='noopener noreferrer'
                             className='flex items-center'>
-                            <Github className='w-4 h-4 mr-2' />
+                            <GithubIcon className='w-4 h-4 mr-2' />
                             Source Code
                           </a>
                         </Button>

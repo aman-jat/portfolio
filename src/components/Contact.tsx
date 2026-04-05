@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Github,
-  Linkedin,
-  Twitter,
-  Send,
-} from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import GithubIcon from '@/components/ui/GithubIcon';
 import {
   Card,
   CardContent,
@@ -44,23 +37,17 @@ const contactInfo = [
 
 const socialLinks = [
   {
-    icon: Github,
+    icon: GithubIcon,
     label: 'GitHub',
     href: 'https://github.com/aman-jat',
     color: 'hover:text-gray-900',
   },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/amanjat/',
-    color: 'hover:text-blue-600',
-  },
-  {
-    icon: Twitter,
-    label: 'Twitter',
-    href: 'https://twitter.com',
-    color: 'hover:text-blue-400',
-  },
+  // {
+  //   icon: Linkedin,
+  //   label: 'LinkedIn',
+  //   href: 'https://www.linkedin.com/in/amanjat/',
+  //   color: 'hover:text-blue-600',
+  // },
 ];
 
 const Contact = () => {

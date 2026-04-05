@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ChevronDown, Mail } from 'lucide-react';
+import GithubIcon from '@/components/ui/GithubIcon';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import aman from '../assets/images/aman.png';
@@ -42,15 +43,15 @@ const Hero = () => {
               target='_blank'
               rel='noopener noreferrer'
               className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
-              <Github size={28} />
+              <GithubIcon size={28} />
             </a>
-            <a
+            {/* <a
               href='https://www.linkedin.com/in/amanjat/'
               target='_blank'
               rel='noopener noreferrer'
               className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
               <Linkedin size={28} />
-            </a>
+            </a> */}
             <a
               href='mailto:amanjat261@gmail.com'
               className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
@@ -89,15 +90,15 @@ const Hero = () => {
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
-                <Github size={28} />
+                <GithubIcon size={28} />
               </a>
-              <a
+              {/* <a
                 href='https://www.linkedin.com/in/amanjat/'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
                 <Linkedin size={28} />
-              </a>
+              </a> */}
               <a
                 href='mailto:amanjat261@gmail.com'
                 className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
@@ -138,15 +139,15 @@ const Hero = () => {
               target='_blank'
               rel='noopener noreferrer'
               className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
-              <Github size={28} />
+              <GithubIcon size={28} />
             </a>
-            <a
+            {/* <a
               href='https://www.linkedin.com/in/amanjat/'
               target='_blank'
               rel='noopener noreferrer'
               className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>
               <Linkedin size={28} />
-            </a>
+            </a> */}
             <a
               href='mailto:amanjat261@gmail.com'
               className='text-gray-700 rounded-full p-2 hover:text-white hover:bg-gray-700 transition-all duration-600 tech-icon'>

@@ -1,5 +1,6 @@
 import { Project } from '@/type';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import GithubIcon from '@/components/ui/GithubIcon';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -81,7 +82,7 @@ const ProjectCard = ({ project, isVisible }: ProjectCardProps) => {
             rel="noopener noreferrer"
             className="flex items-center gap-2"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-4 w-4" />
             Code
           </a>
         </Button> */}

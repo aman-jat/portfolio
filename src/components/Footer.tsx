@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Mail, Heart } from 'lucide-react';
+import GithubIcon from '@/components/ui/GithubIcon';
 import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
@@ -7,20 +8,20 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      icon: Github,
+      icon: GithubIcon,
       href: 'https://github.com/aman-jat',
       label: 'GitHub',
     },
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/amanjat/',
-      label: 'LinkedIn',
-    },
-    {
-      icon: Mail,
-      href: 'mailto:amanjat261@gmail.com',
-      label: 'Email',
-    },
+    // {
+    //   icon: Linkedin,
+    //   href: 'https://www.linkedin.com/in/amanjat/',
+    //   label: 'LinkedIn',
+    // },
+    // {
+    //   icon: Mail,
+    //   href: 'mailto:amanjat261@gmail.com',
+    //   label: 'Email',
+    // },
   ];
 
   const scrollToTop = () => {
