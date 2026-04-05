@@ -1,36 +1,36 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { label: "Home", id: "hero" },
-  { label: "About", id: "about" },
-  { label: "Projects", id: "projects" },
-  { label: "Skills", id: "skills" },
-  { label: "Contact", id: "contact" },
+  { label: 'Home', id: 'hero' },
+  { label: 'About', id: 'about' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Contact', id: 'contact' },
 ];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const isOnProject = window.location.pathname === "/projects";
+  const isOnProject = window.location.pathname === '/projects';
 
   const navigate = useNavigate();
 
   const scrollToSection = (sectionId: string) => {
-    if (sectionId === "projects") {
-      navigate("/projects");
+    if (sectionId === 'projects') {
+      navigate('/projects');
       setIsOpen(false);
       return;
     }
 
     if (isOnProject) {
-      navigate("/");
+      navigate('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          element.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100);
       setIsOpen(false);
@@ -39,7 +39,7 @@ const Navigation = () => {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsOpen(false);
   };
@@ -51,8 +51,8 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -61,37 +61,35 @@ const Navigation = () => {
       <nav
         className={`hidden md:block md:fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? "md:bg-background/50 backdrop-blur-md  shadow-soft "
-            : "bg-transparent"
-        }`}
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+            ? 'md:bg-background/50 backdrop-blur-md  shadow-soft '
+            : 'bg-transparent'
+        }`}>
+        <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+          <div className='flex justify-between items-center py-4'>
             {/* Logo */}
-            <div className="md:flex flex-row items-center text-xl font-bold text-gradient ">
-              <a href="/" className="underline underline-offset-2">
-                <p>PORTFOLIO</p>
+            <div className='md:flex flex-row items-center text-xl font-bold text-gradient '>
+              <a href='/' className='underline underline-offset-2N '>
+                <p>AMAN JAT</p>
               </a>
               {isOnProject && (
                 <>
-                  <ChevronRight color="#00000050" />
-                  <p className="font-normal ">PROJECTS</p>
+                  <ChevronRight color='#00000050' />
+                  <p className='font-normal '>PROJECTS</p>
                 </>
               )}
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              {navItems.map((item) => {
-                if (isOnProject && item.id !== "hero") {
+            <div className='hidden md:flex space-x-8'>
+              {navItems.map(item => {
+                if (isOnProject && item.id !== 'hero') {
                   return null;
                 }
                 return (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-gray-800 hover:text-hero-primary transition-colors duration-200 font-medium"
-                  >
+                    className='text-gray-800 hover:text-hero-primary transition-colors duration-200 font-medium relative cursor-pointer after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-0 after:bg-hero-primary after:transition-all after:duration-200 hover:after:w-full'>
                     {item.label}
                   </button>
                 );
@@ -102,12 +100,12 @@ const Navigation = () => {
       </nav>
 
       {/* Mobile Navigation */}
-      <header className="flex sm:hidden">
+      <header className='flex sm:hidden'>
         {/* Hamburger */}
 
-        <div className="fixed h-10  w-full  p-8 flex items-center justify-between z-[10000]">
+        <div className='fixed h-10  w-full  p-8 flex items-center justify-between z-[10000]'>
           {isOnProject && (!isScrolled || isOpen) ? (
-            <div onClick={navigateBack} className="pr-10">
+            <div onClick={navigateBack} className='pr-10'>
               <ChevronLeft size={32} />
             </div>
           ) : (
@@ -115,24 +113,20 @@ const Navigation = () => {
           )}
 
           <button
-            onClick={() => setIsOpen((prev) => !prev)}
-            className="flex flex-col gap-1.5 cursor-pointer z-[9999]"
-          >
+            onClick={() => setIsOpen(prev => !prev)}
+            className='flex flex-col gap-1.5 cursor-pointer z-[9999]'>
             <span
               className={`bar1 bg-gray-700 h-[1.5px] w-[27px] rounded-full transition-all duration-300 ${
-                isOpen ? "rotate-45 translate-y-[7px]" : ""
-              }`}
-            ></span>
+                isOpen ? 'rotate-45 translate-y-[7px]' : ''
+              }`}></span>
             <span
               className={`bar2 bg-gray-700 h-[1.5px] w-[27px] rounded-full transition-all duration-300 ${
-                isOpen ? "opacity-0 w-0" : ""
-              }`}
-            ></span>
+                isOpen ? 'opacity-0 w-0' : ''
+              }`}></span>
             <span
               className={`bar3 bg-gray-700 h-[1.5px] w-[27px] rounded-full transition-all duration-300 ${
-                isOpen ? "-rotate-45 -translate-y-[7px]" : ""
-              }`}
-            ></span>
+                isOpen ? '-rotate-45 -translate-y-[7px]' : ''
+              }`}></span>
           </button>
         </div>
 
@@ -143,25 +137,22 @@ const Navigation = () => {
             bg-background/50 backdrop-blur-md  shadow-soft 
             ${
               isOpen
-                ? "scale-y-100 opacity-100 z-[9999]"
-                : "scale-y-50 opacity-0 z-[-1]"
-            }`}
-        >
-          {navItems.map((item) => (
+                ? 'scale-y-100 opacity-100 z-[9999]'
+                : 'scale-y-50 opacity-0 z-[-1]'
+            }`}>
+          {navItems.map(item => (
             <span
               key={item.label}
               className={`relative text-grey-800 text-lg font-bold cursor-pointer group transition-all duration-500 
               ${
-                isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
-            >
+                isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
               <span
                 onClick={() => {
                   if (isOpen) {
                     scrollToSection(item.id);
                   }
-                }}
-              >
+                }}>
                 {item.label}
               </span>
             </span>
