@@ -1,8 +1,8 @@
-import { Project } from '@/type';
-import { ExternalLink } from 'lucide-react';
-import GithubIcon from '@/components/ui/GithubIcon';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Project } from "@/type";
+import { ExternalLink } from "lucide-react";
+import GithubIcon from "@/components/ui/GithubIcon";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -10,7 +10,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from "@/components/ui/card";
 
 interface ProjectCardProps {
   isVisible: boolean;
@@ -30,51 +30,53 @@ const ProjectCard = ({ project, isVisible }: ProjectCardProps) => {
     transition-all 
     duration-500 
     hover:border-border/80
-    ${isVisible ? 'animate-fade-in' : ''}
-    `}>
+    ${isVisible ? "animate-fade-in" : ""}
+    `}
+    >
       {/* Project Image */}
-      <div className='relative overflow-hidden bg-muted/20'>
+      <div className="relative overflow-hidden bg-muted/20">
         <img
           src={project.image}
           alt={project.title}
-          className='h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105'
+          className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
         {/* <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
       </div>
 
-      <CardHeader className='pb-3'>
-        <div className='flex items-start justify-between'>
-          <div className='space-y-1 flex-1'>
-            <CardTitle className='text-lg font-semibold line-clamp-1'>
+      <CardHeader className="pb-3">
+        <div className="flex items-start justify-between">
+          <div className="space-y-1 flex-1">
+            <CardTitle className="text-lg font-semibold line-clamp-1">
               {project.title}
             </CardTitle>
           </div>
         </div>
-        <CardDescription className='text-xs text-muted-foreground line-clamp-3'>
+        <CardDescription className="text-xs text-muted-foreground line-clamp-3">
           {project.description}
         </CardDescription>
       </CardHeader>
 
-      <CardContent className='pt-0'>
+      <CardContent className="pt-0">
         {/* Technologies */}
-        <div className='flex flex-wrap gap-1.5'>
-          {project.technologies.slice(0, 4).map(tech => (
+        <div className="flex flex-wrap gap-1.5">
+          {project.technologies.slice(0, 4).map((tech) => (
             <Badge
               key={tech}
-              variant='outline'
-              className='tech-gradient text-xs px-2 py-0.5'>
+              variant="outline"
+              className="tech-gradient text-xs px-2 py-0.5"
+            >
               {tech}
             </Badge>
           ))}
           {project.technologies.length > 4 && (
-            <Badge variant='outline' className='text-xs px-2 py-0.5'>
+            <Badge variant="outline" className="text-xs px-2 py-0.5">
               +{project.technologies.length - 4}
             </Badge>
           )}
         </div>
       </CardContent>
 
-      <CardFooter className='pt-0 flex gap-2'>
+      <CardFooter className="pt-0 flex gap-2">
         {/* <Button size="sm" variant="outline" className="flex-1 h-9" asChild>
           <a
             href={project.githubUrl}
@@ -88,13 +90,14 @@ const ProjectCard = ({ project, isVisible }: ProjectCardProps) => {
         </Button> */}
 
         {project.liveUrl && (
-          <Button size='sm' className='flex-1 h-9' asChild>
+          <Button size="sm" className="flex-1 h-9" asChild>
             <a
               href={project.liveUrl}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='flex items-center gap-2'>
-              <ExternalLink className='h-4 w-4' />
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <ExternalLink className="h-4 w-4" />
               Live
             </a>
           </Button>

@@ -34,11 +34,11 @@ const Projects = () => {
           project.category.includes("fullstack") ||
           project.category.includes("react") ||
           project.category.includes("javaScript") ||
-          project.category.includes("html/css")
+          project.category.includes("html/css"),
       );
     } else {
       unsortedProjects = projects.filter((project) =>
-        project.category.includes(category)
+        project.category.includes(category),
       );
     }
     return unsortedProjects.sort((a, b) => a.priority - b.priority);
@@ -61,7 +61,7 @@ const Projects = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {

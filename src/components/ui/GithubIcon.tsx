@@ -1,4 +1,10 @@
-const GithubIcon = ({ size, className }: { size?: number; className?: string }) => (
+const GithubIcon = ({
+  size,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size ?? 24}
