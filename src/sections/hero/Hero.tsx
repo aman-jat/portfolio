@@ -1,22 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Container, Typography, Button, IconButton, Stack, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { ChevronDown, Mail } from 'lucide-react';
-import GithubIcon from '@/components/GithubIcon';
 import { useNavigate } from 'react-router-dom';
 import aman from '../../assets/images/aman.png';
-
-const LinkedInIcon = ({ size = 28 }: { size?: number }) => (
-  <svg height={size} width={size} viewBox="0 0 382 382" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-    <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472L341.91,330.654L341.91,330.654z" />
-  </svg>
-);
-
-const AIIcon = ({ size = 16 }: { size?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" height={size} width={size} fill="currentColor">
-    <path d="M14.217,19.707l-1.112,2.547c-0.427,0.979-1.782,0.979-2.21,0l-1.112-2.547c-0.99-2.267-2.771-4.071-4.993-5.057L1.73,13.292c-0.973-0.432-0.973-1.848,0-2.28l2.965-1.316C6.974,8.684,8.787,6.813,9.76,4.47l1.126-2.714c0.418-1.007,1.81-1.007,2.228,0L14.24,4.47c0.973,2.344,2.786,4.215,5.065,5.226l2.965,1.316c0.973,0.432,0.973,1.848,0,2.28l-3.061,1.359C16.988,15.637,15.206,17.441,14.217,19.707z" />
-    <path d="M24.481,27.796l-0.339,0.777c-0.248,0.569-1.036,0.569-1.284,0l-0.339-0.777c-0.604-1.385-1.693-2.488-3.051-3.092l-1.044-0.464c-0.565-0.251-0.565-1.072,0-1.323l0.986-0.438c1.393-0.619,2.501-1.763,3.095-3.195l0.348-0.84c0.243-0.585,1.052-0.585,1.294,0l0.348,0.84c0.594,1.432,1.702,2.576,3.095,3.195l0.986,0.438c0.565,0.251,0.565,1.072,0,1.323l-1.044,0.464C26.174,25.308,25.085,26.411,24.481,27.796z" />
-  </svg>
-);
+import { AIIcon, GithubIcon, LinkedInIcon } from '@/assets/icons/GithubIcon';
+import RoleCarousel from '@/components/RoleCarousel';
 
 const roles = [
   'Full-Stack Developer',
@@ -30,77 +18,6 @@ const roles = [
   'Next.js Developer',
   'Node.js Developer'
 ];
-
-const RoleCarousel = () => {
-  const [current, setCurrent] = useState(0);
-  const [phase, setPhase] = useState<'idle' | 'exit' | 'enter'>('idle');
-  const [displayed, setDisplayed] = useState(0);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    timeoutRef.current = setTimeout(() => {
-      setPhase('exit');
-      setTimeout(() => {
-        const nextIdx = (current + 1) % roles.length;
-        setCurrent(nextIdx);
-        setDisplayed(nextIdx);
-        setPhase('enter');
-        setTimeout(() => setPhase('idle'), 400);
-      }, 350);
-    }, 2000);
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [current]);
-
-  const animStyle: React.CSSProperties =
-    phase === 'exit'
-      ? { animation: 'roleSlideOut 350ms ease-in forwards' }
-      : phase === 'enter'
-        ? { animation: 'roleSlideIn 400ms ease-out forwards' }
-        : {
-            transform: 'translateY(0) scaleY(1)',
-            opacity: 1,
-            filter: 'blur(0px)'
-          };
-
-  return (
-    <>
-      <style>{`
-        @keyframes roleSlideIn {
-          from { transform: translateY(120%) scaleY(0.6); opacity: 0; filter: blur(8px); }
-          to   { transform: translateY(0)    scaleY(1);   opacity: 1; filter: blur(0px); }
-        }
-        @keyframes roleSlideOut {
-          from { transform: translateY(0)     scaleY(1);   opacity: 1; filter: blur(0px); }
-          to   { transform: translateY(-120%) scaleY(0.6); opacity: 0; filter: blur(8px); }
-        }
-      `}</style>
-      <Box
-        sx={{
-          overflow: 'hidden',
-          height: { xs: 40, sm: 48, md: 56 },
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        <Typography
-          variant="h5"
-          component="h2"
-          className="text-gradient"
-          sx={{
-            fontWeight: 600,
-            fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.875rem' }
-          }}
-          style={animStyle}
-        >
-          {roles[displayed]}
-        </Typography>
-      </Box>
-    </>
-  );
-};
 
 const socialLinks = [
   {
@@ -238,7 +155,7 @@ const Hero = () => {
               >
                 AMAN JAT
               </Typography>
-              <RoleCarousel />
+              <RoleCarousel roles={roles} />
             </Stack>
 
             {/* Mobile Image */}
