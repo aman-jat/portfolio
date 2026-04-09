@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { Box, Container, Typography, Button, IconButton, Stack, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { ChevronDown, Mail } from 'lucide-react';
-import GithubIcon from '@/components/ui/GithubIcon';
+import GithubIcon from '@/components/GithubIcon';
 import { useNavigate } from 'react-router-dom';
-import aman from '../assets/images/aman.png';
+import aman from '../../assets/images/aman.png';
 
 const LinkedInIcon = ({ size = 28 }: { size?: number }) => (
   <svg height={size} width={size} viewBox="0 0 382 382" xmlns="http://www.w3.org/2000/svg" fill="currentColor">

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Container, Typography, Grid, Tabs, Tab, Stack } from '@mui/material';
-import Navigation from '@/components/Navigation.tsx';
-import Footer from '@/components/Footer.tsx';
+import Navigation from '@/sections/navigation/Navigation.tsx';
+import Footer from '@/sections/footer/Footer.tsx';
 import { projects } from '../constants.ts';
 import { ProjectCategory } from '../type.ts';
-import ProjectCard from '@/components/ui/ProjectCard.tsx';
+import ProjectCard from '@/components/ProjectCard.tsx';
 
 const categories: { value: ProjectCategory | 'all'; label: string }[] = [
   { value: 'all', label: 'All' },

@@ -1,7 +1,20 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { AppBar, Box, Container, IconButton, Stack, Typography, Link, Drawer, List, ListItemButton, ListItemText, Slide } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Container,
+  IconButton,
+  Stack,
+  Typography,
+  Link,
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemText,
+  Slide
+} from '@mui/material';
 
 const navItems = [
   { label: 'Home', id: 'hero' },

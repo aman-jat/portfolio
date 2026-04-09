@@ -1,5 +1,5 @@
 import { Heart } from 'lucide-react';
-import GithubIcon from '@/components/ui/GithubIcon';
+import GithubIcon from '@/components/GithubIcon';
 import { useNavigate } from 'react-router-dom';
 import { Box, Container, Typography, Grid, Stack, IconButton, Divider, Link } from '@mui/material';
 

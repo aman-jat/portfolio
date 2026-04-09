@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import GithubIcon from '@/components/ui/GithubIcon';
+import GithubIcon from '@/components/GithubIcon';
 import {
   Box,
   Container,

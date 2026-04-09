@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Container, Typography, Grid, Link, Stack } from '@mui/material';
 import { projects } from '@/constants';
-import ProjectCard from './ui/ProjectCard';
+import ProjectCard from '../../components/ProjectCard';
 
 const FeaturedProjects = () => {
   const [isVisible, setIsVisible] = useState(false);

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Box } from '@mui/material';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Footer from '@/components/Footer';
-import Contact from '@/components/Contact';
-import Navigation from '@/components/Navigation';
-import FeaturedProjects from '@/components/FeaturedProjects';
+import Hero from '@/sections/hero/Hero';
+import About from '@/sections/about/About';
+import Skills from '@/sections/skills/Skills';
+import Footer from '@/sections/footer/Footer';
+import Contact from '@/sections/contact/Contact';
+import Navigation from '@/sections/navigation/Navigation';
+import FeaturedProjects from '@/sections/featured-projects/FeaturedProjects';
 
 const MainPage = () => {
   useEffect(() => {
