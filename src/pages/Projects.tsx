@@ -1,181 +1,183 @@
-import {
-  Span,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import Navigation from "@/components/Navigation.tsx";
-import Footer from "@/components/Footer.tsx";
-import { projects } from "../constants.ts";
-import { ProjectCategory } from "../type.ts";
-import ProjectCard from "@/components/ui/ProjectCard.tsx";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
+import { Box, Container, Typography, Grid, Tabs, Tab, Stack } from '@mui/material';
+import Navigation from '@/components/Navigation.tsx';
+import Footer from '@/components/Footer.tsx';
+import { projects } from '../constants.ts';
+import { ProjectCategory } from '../type.ts';
+import ProjectCard from '@/components/ui/ProjectCard.tsx';
+
+const categories: { value: ProjectCategory | 'all'; label: string }[] = [
+  { value: 'all', label: 'All' },
+  { value: 'html/css', label: 'HTML/CSS UI' },
+  { value: 'javaScript', label: 'JavaScript' },
+  { value: 'react', label: 'React' },
+  { value: 'backend', label: 'Backend' },
+  { value: 'fullstack', label: 'Full Stack' }
+];
+
+const mobileCategories = categories.filter((c) => !['html/css', 'javaScript', 'react'].includes(c.value));
+
+const getFilteredProjects = (category: ProjectCategory | 'all') => {
+  const unsorted =
+    category === 'all'
+      ? [...projects]
+      : category === 'frontend'
+        ? projects.filter((p) => ['fullstack', 'react', 'javaScript', 'html/css'].some((c) => p.category.includes(c as ProjectCategory)))
+        : projects.filter((p) => p.category.includes(category));
+  return unsorted.sort((a, b) => a.priority - b.priority);
+};
 
 const Projects = () => {
-  const categories: { value: ProjectCategory | "all"; label: string }[] = [
-    { value: "all", label: "All" },
-    { value: "html/css", label: "HTML/CSS UI" },
-    { value: "javaScript", label: "JavaScript" },
-    { value: "react", label: "React" },
-    { value: "frontend", label: "Frontend" },
-    // { value: "nextjs", label: "Next.js" },
-    { value: "backend", label: "Backend" },
-    { value: "fullstack", label: "Full Stack" },
-  ];
-
-  const getFilteredProjects = (category: ProjectCategory | "all") => {
-    let unsortedProjects = [];
-    if (category === "all") {
-      unsortedProjects = [...projects];
-    } else if (category === "frontend") {
-      unsortedProjects = projects.filter(
-        (project) =>
-          project.category.includes("fullstack") ||
-          project.category.includes("react") ||
-          project.category.includes("javaScript") ||
-          project.category.includes("html/css"),
-      );
-    } else {
-      unsortedProjects = projects.filter((project) =>
-        project.category.includes(category),
-      );
-    }
-    return unsortedProjects.sort((a, b) => a.priority - b.priority);
-  };
-
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
-    return () => {
-      document.documentElement.style.scrollBehavior = "auto";
-    };
-  }, []);
-
+  const [activeTab, setActiveTab] = useState<ProjectCategory | 'all'>('all');
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
+  const filtered = getFilteredProjects(activeTab);
+
   return (
-    <div className="min-h-screen bg-background font-zalando overflow-scroll">
+    <Box
+      sx={{
+        minHeight: '100vh',
+        bgcolor: 'background.default',
+        overflow: 'auto'
+      }}
+    >
       <Navigation />
 
-      <section id="projects" ref={sectionRef}>
-        <div className="container mx-auto  px-4 py-12">
-          <div
-            className={`max-w-7xl mx-auto transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-100 translate-y-0"
-            }`}
-          >
+      <Box component="section" id="projects" ref={sectionRef}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 }, py: 6 }}>
+          <Box sx={{ maxWidth: '80rem', mx: 'auto' }}>
             {/* Header */}
-            <div className="mb-4 pt-6 sm:pb-0 md:pb-2 text-center">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                My <span className="text-gradient">Projects</span>
-              </h2>
-            </div>
+            <Stack alignItems="center" mb={4} pt={3}>
+              <Typography
+                variant="h3"
+                component="h2"
+                sx={{
+                  fontWeight: 700,
+                  fontSize: { xs: '1.875rem', sm: '2.25rem', lg: '3rem' }
+                }}
+              >
+                My{' '}
+                <Box component="span" className="text-gradient">
+                  Projects
+                </Box>
+              </Typography>
+            </Stack>
 
-            {/* Tabs Navigation */}
-            <Tabs defaultValue="all" className="w-full">
-              {/* Desktop */}
-              <div className="hidden md:flex justify-center mb-8">
-                <TabsList className="grid  max-w-4xl grid-cols-6 text-muted/70 bg-gray-800 h-12">
-                  {categories.map((category) => {
-                    if (category.value === "frontend") {
-                      return null;
+            {/* Desktop Tabs */}
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                justifyContent: 'center',
+                mb: 4
+              }}
+            >
+              <Box
+                sx={{
+                  bgcolor: 'grey.800',
+                  borderRadius: 2,
+                  p: 0.5,
+                  display: 'inline-flex'
+                }}
+              >
+                <Tabs
+                  value={activeTab}
+                  onChange={(_, val) => setActiveTab(val)}
+                  TabIndicatorProps={{ style: { display: 'none' } }}
+                  sx={{
+                    minHeight: 44,
+                    '& .MuiTab-root': {
+                      color: 'rgba(255,255,255,0.6)',
+                      textTransform: 'none',
+                      fontWeight: 500,
+                      fontSize: '0.875rem',
+                      minHeight: 44,
+                      px: 2,
+                      borderRadius: 1.5,
+                      transition: 'all 0.2s'
+                    },
+                    '& .Mui-selected': {
+                      color: 'text.primary',
+                      bgcolor: 'background.default',
+                      boxShadow: 1
                     }
-                    return (
-                      <TabsTrigger
-                        key={category.value}
-                        value={category.value}
-                        className="text-sm  px-6 py-2 data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                      >
-                        <span>{category.label}</span>
-                        <span className="hidden data-[state=active]:inline-block md:inline-block ">
-                          ({getFilteredProjects(category.value).length})
-                        </span>
-                      </TabsTrigger>
-                    );
-                  })}
-                </TabsList>
-              </div>
+                  }}
+                >
+                  {categories.map((cat) => (
+                    <Tab key={cat.value} value={cat.value} label={`${cat.label} (${getFilteredProjects(cat.value).length})`} />
+                  ))}
+                </Tabs>
+              </Box>
+            </Box>
 
-              {/* Mobile */}
-              <div className="sm:block md:hidden flex justify-center ">
-                <TabsList className="bg-inherit">
-                  {categories.map((category) => {
-                    if (
-                      category.value === "html/css" ||
-                      category.value === "javaScript" ||
-                      category.value === "react"
-                    ) {
-                      return null;
-                    }
-                    return (
-                      <TabsTrigger
-                        key={category.value}
-                        value={category.value}
-                        className="data-[state=active]:text-gradient data-[state=active]:shadow-none data-[state=active]:underline underline-offset-4 "
-                      >
-                        <span className="data-[state=active]:text-gradient">
-                          {category.label}
-                        </span>
-                        <Span
-                          value={category.value}
-                          className="hidden data-[state=active]:inline-block"
-                        >
-                          ({getFilteredProjects(category.value).length})
-                        </Span>
-                      </TabsTrigger>
-                    );
-                  })}
-                </TabsList>
-              </div>
+            {/* Mobile Tabs */}
+            <Box
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                justifyContent: 'center',
+                mb: 3
+              }}
+            >
+              <Tabs
+                value={mobileCategories.find((c) => c.value === activeTab) ? activeTab : 'all'}
+                onChange={(_, val) => setActiveTab(val)}
+                variant="scrollable"
+                scrollButtons="auto"
+                sx={{
+                  '& .MuiTab-root': {
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    fontSize: '0.875rem'
+                  },
+                  '& .Mui-selected': {
+                    fontWeight: 700
+                  }
+                }}
+              >
+                {mobileCategories.map((cat) => (
+                  <Tab key={cat.value} value={cat.value} label={cat.label} />
+                ))}
+              </Tabs>
+            </Box>
 
-              {/* Tab Content */}
-              {categories.map((category) => (
-                <TabsContent key={category.value} value={category.value}>
-                  <div className="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {getFilteredProjects(category.value).map((project) => (
-                      <ProjectCard
-                        key={project.id}
-                        project={project}
-                        isVisible={isVisible}
-                      />
-                    ))}
-                  </div>
+            {/* Projects Grid */}
+            {filtered.length > 0 ? (
+              <Grid container spacing={3}>
+                {filtered.map((project) => (
+                  <Grid key={project.id} size={{ xs: 12, sm: 6, lg: 4 }}>
+                    <ProjectCard project={project} isVisible={isVisible} />
+                  </Grid>
+                ))}
+              </Grid>
+            ) : (
+              <Stack alignItems="center" py={8}>
+                <Typography color="text.secondary">No projects found in this category yet.</Typography>
+              </Stack>
+            )}
+          </Box>
+        </Container>
+      </Box>
 
-                  {getFilteredProjects(category.value).length === 0 && (
-                    <div className="text-center py-12">
-                      <p className="text-muted-foreground">
-                        No projects found in this category yet.
-                      </p>
-                    </div>
-                  )}
-                </TabsContent>
-              ))}
-            </Tabs>
-          </div>
-        </div>
-      </section>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

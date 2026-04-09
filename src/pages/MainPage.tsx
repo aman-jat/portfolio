@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Footer from "@/components/Footer";
-import Contact from "@/components/Contact";
-import Navigation from "@/components/Navigation";
-import FeaturedProjects from "@/components/FeaturedProjects";
+import { useEffect } from 'react';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Skills from '@/components/Skills';
+import Footer from '@/components/Footer';
+import Contact from '@/components/Contact';
+import Navigation from '@/components/Navigation';
+import FeaturedProjects from '@/components/FeaturedProjects';
 
 const MainPage = () => {
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
+    document.documentElement.style.scrollBehavior = 'smooth';
     return () => {
-      document.documentElement.style.scrollBehavior = "auto";
+      document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
 

@@ -1,16 +1,6 @@
-import { Project } from "@/type";
-import { ExternalLink } from "lucide-react";
-import GithubIcon from "@/components/ui/GithubIcon";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Project } from '@/type';
+import { ExternalLink } from 'lucide-react';
+import { Box, Card, CardContent, CardMedia, CardActions, Typography, Chip, Button, Stack } from '@mui/material';
 
 interface ProjectCardProps {
   isVisible: boolean;
@@ -20,89 +10,110 @@ interface ProjectCardProps {
 const ProjectCard = ({ project, isVisible }: ProjectCardProps) => {
   return (
     <Card
-      className={`
-    group 
-    overflow-hidden 
-    border 
-    border-border 
-    bg-card 
-    hover:shadow-lg 
-    transition-all 
-    duration-500 
-    hover:border-border/80
-    ${isVisible ? "animate-fade-in" : ""}
-    `}
+      className={isVisible ? 'animate-fade-in' : ''}
+      sx={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+        border: '1px solid',
+        borderColor: 'divider',
+        transition: 'all 0.5s ease',
+        '&:hover': {
+          boxShadow: 6,
+          borderColor: 'divider',
+          '& .project-image': { transform: 'scale(1.05)' }
+        }
+      }}
     >
       {/* Project Image */}
-      <div className="relative overflow-hidden bg-muted/20">
-        <img
-          src={project.image}
+      <Box sx={{ overflow: 'hidden', bgcolor: 'action.hover' }}>
+        <CardMedia
+          component="img"
+          image={project.image}
           alt={project.title}
-          className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="project-image"
+          sx={{
+            height: 192,
+            objectFit: 'cover',
+            transition: 'transform 0.3s ease'
+          }}
         />
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
-      </div>
+      </Box>
 
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
-          <div className="space-y-1 flex-1">
-            <CardTitle className="text-lg font-semibold line-clamp-1">
-              {project.title}
-            </CardTitle>
-          </div>
-        </div>
-        <CardDescription className="text-xs text-muted-foreground line-clamp-3">
+      <CardContent sx={{ pb: 1, flexGrow: 1 }}>
+        {/* Title */}
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 600,
+            fontSize: '1rem',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitLineClamp: 1,
+            WebkitBoxOrient: 'vertical',
+            mb: 0.5
+          }}
+        >
+          {project.title}
+        </Typography>
+
+        {/* Description */}
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            fontSize: '0.75rem',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: 'vertical',
+            mb: 2
+          }}
+        >
           {project.description}
-        </CardDescription>
-      </CardHeader>
+        </Typography>
 
-      <CardContent className="pt-0">
         {/* Technologies */}
-        <div className="flex flex-wrap gap-1.5">
+        <Stack direction="row" flexWrap="wrap" gap={0.5}>
           {project.technologies.slice(0, 4).map((tech) => (
-            <Badge
+            <Chip
               key={tech}
-              variant="outline"
-              className="tech-gradient text-xs px-2 py-0.5"
-            >
-              {tech}
-            </Badge>
+              label={tech}
+              size="small"
+              variant="outlined"
+              className="tech-gradient"
+              sx={{ fontSize: '0.7rem', height: 22 }}
+            />
           ))}
           {project.technologies.length > 4 && (
-            <Badge variant="outline" className="text-xs px-2 py-0.5">
-              +{project.technologies.length - 4}
-            </Badge>
+            <Chip label={`+${project.technologies.length - 4}`} size="small" variant="outlined" sx={{ fontSize: '0.7rem', height: 22 }} />
           )}
-        </div>
+        </Stack>
       </CardContent>
 
-      <CardFooter className="pt-0 flex gap-2">
-        {/* <Button size="sm" variant="outline" className="flex-1 h-9" asChild>
-          <a
-            href={project.githubUrl}
+      {project.liveUrl && (
+        <CardActions sx={{ pt: 0, px: 2, pb: 2 }}>
+          <Button
+            component="a"
+            href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            variant="contained"
+            size="small"
+            startIcon={<ExternalLink size={14} />}
+            fullWidth
+            sx={{
+              textTransform: 'none',
+              fontWeight: 500,
+              borderRadius: 1.5,
+              height: 36
+            }}
           >
-            <GithubIcon className="h-4 w-4" />
-            Code
-          </a>
-        </Button> */}
-
-        {project.liveUrl && (
-          <Button size="sm" className="flex-1 h-9" asChild>
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
-              <ExternalLink className="h-4 w-4" />
-              Live
-            </a>
+            Live
           </Button>
-        )}
-      </CardFooter>
+        </CardActions>
+      )}
     </Card>
   );
 };

@@ -1,19 +1,19 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { ThemeProviderWrapper } from "./contexts/ThemeContext";
-import MainPage from "./pages/MainPage";
-import NotFound from "./pages/NotFound";
-import Projects from "./pages/Projects";
-import ScrollToTop from "./components/ScrollToTop";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProviderWrapper } from './contexts/ThemeContext';
+import MainPage from './pages/MainPage';
+import NotFound from './pages/NotFound';
+import Projects from './pages/Projects';
+import ScrollToTop from './components/ScrollToTop';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
     }
   }, []);
 
