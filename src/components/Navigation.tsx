@@ -1,22 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import {
-  AppBar,
-  Box,
-  Container,
-  IconButton,
-  Stack,
-  Typography,
-  Link,
-  Drawer,
-  List,
-  ListItemButton,
-  ListItemText,
-  Slide
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import { AppBar, Box, Container, IconButton, Stack, Typography, Link, Drawer, List, ListItemButton, ListItemText, Slide } from '@mui/material';
 
 const navItems = [
   { label: 'Home', id: 'hero' },
@@ -105,6 +90,7 @@ const Navigation = () => {
                       border: 'none',
                       cursor: 'pointer',
                       color: 'grey.800',
+                      fontFamily: 'inherit',
                       fontWeight: 500,
                       fontSize: '0.95rem',
                       position: 'relative',
@@ -158,7 +144,7 @@ const Navigation = () => {
           )}
 
           <IconButton onClick={() => setIsOpen((prev) => !prev)} size="small" sx={{ color: 'grey.700', zIndex: 9999 }}>
-            {isOpen ? <CloseIcon fontSize="medium" /> : <MenuIcon fontSize="medium" />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </IconButton>
         </Box>
 

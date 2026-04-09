@@ -1,290 +1,135 @@
-/* Using Apple's system font stack */
+/* ── Custom Properties ──────────────────────────────────────── */
+:root {
+  --background: hsl(220, 20%, 98%);
+  --foreground: hsl(220, 15%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(220, 15%, 15%);
+  --primary: hsl(222, 84%, 4.9%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(220, 14%, 96%);
+  --muted: hsl(220, 14%, 96%);
+  --muted-foreground: hsl(220, 8%, 46%);
+  --accent: hsl(216, 100%, 97%);
+  --border: hsl(220, 13%, 91%);
+  --radius: 0.75rem;
 
-@import "tailwindcss";
+  --hero-primary: hsl(216, 84%, 55%);
+  --hero-secondary: hsl(245, 84%, 65%);
+  --tech-primary: hsl(216, 84%, 55%);
+  --tech-secondary: hsl(245, 84%, 65%);
+  --project-accent: hsl(280, 100%, 70%);
 
-@custom-variant dark (&:is(.dark *));
+  --gradient-hero: linear-gradient(135deg, var(--hero-primary), var(--hero-secondary));
+  --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(220, 14%, 98%));
+  --gradient-tech: linear-gradient(120deg, hsl(216deg 84% 55% / 0.1), hsl(245deg 84% 65% / 0.1));
 
-@theme inline {
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --color-sidebar: hsl(var(--sidebar-background));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
-
-  --color-hero-primary: hsl(var(--hero-primary));
-  --color-hero-secondary: hsl(var(--hero-secondary));
-  --color-tech-primary: hsl(var(--tech-primary));
-  --color-tech-secondary: hsl(var(--tech-secondary));
-  --color-project-accent: hsl(var(--project-accent));
-
-  --font-zalando: "Poppins", sans-serif;
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --shadow-soft: 0 2px 25px -5px hsl(216deg 84% 55% / 0.1);
+  --shadow-medium: 0 8px 30px -12px hsl(216deg 84% 55% / 0.25);
+  --shadow-strong: 0 20px 25px -5px hsl(216deg 84% 55% / 0.1), 0 10px 10px -5px hsl(216deg 84% 55% / 0.04);
 }
 
-@keyframes accordion-down {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-  }
+/* ── Base ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-color: var(--border);
+  font-family: inherit;
 }
 
-@keyframes accordion-up {
-  from {
-    height: var(--radix-accordion-content-height);
-  }
-  to {
-    height: 0;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans 3', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-@layer base {
-  :root {
-    /* Professional Blue Theme */
-    --background: 220 20% 98%;
-    --foreground: 220 15% 15%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
-
-    --primary: 222 84% 4.9%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 15% 15%;
-
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 8% 46%;
-
-    --accent: 216 100% 97%;
-    --accent-foreground: 220 15% 15%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 216 34% 17%;
-
-    --radius: 0.75rem;
-
-    /* Portfolio Specific Colors */
-    --hero-primary: 216 84% 55%;
-    --hero-secondary: 245 84% 65%;
-    --tech-primary: 216 84% 55%;
-    --tech-secondary: 245 84% 65%;
-    --project-accent: 280 100% 70%;
-
-    /* Gradients */
-    --gradient-hero: linear-gradient(
-      135deg,
-      hsl(var(--hero-primary)),
-      hsl(var(--hero-secondary))
-    );
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 14% 98%));
-    --gradient-tech: linear-gradient(
-      120deg,
-      hsl(var(--tech-primary) / 0.1),
-      hsl(var(--tech-secondary) / 0.1)
-    );
-
-    /* Shadows */
-    --shadow-soft: 0 2px 25px -5px hsl(var(--hero-primary) / 0.1);
-    --shadow-medium: 0 8px 30px -12px hsl(var(--hero-primary) / 0.25);
-    --shadow-strong:
-      0 20px 25px -5px hsl(var(--hero-primary) / 0.1),
-      0 10px 10px -5px hsl(var(--hero-primary) / 0.04);
-
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+/* ── Custom Component Classes ───────────────────────────────── */
+.hero-gradient {
+  background: var(--gradient-hero);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  html {
-    @apply font-zalando;
-  }
-
-  body {
-    @apply font-zalando;
-    @apply bg-background text-foreground;
-    font-optical-sizing: auto;
-    font-style: normal;
-  }
+.card-gradient {
+  background: var(--gradient-card);
 }
 
-@layer components {
-  /* Hero Section */
-  .hero-gradient {
-    background: var(--gradient-hero);
-  }
-
-  .card-gradient {
-    background: var(--gradient-card);
-  }
-
-  .tech-gradient {
-    background: var(--gradient-tech);
-  }
-
-  /* Animation Classes */
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
-  }
-
-  .animate-bounce-in {
-    animation: bounceIn 0.6s ease-out forwards;
-  }
-
-  /* Hover Effects */
-  .hover-lift {
-    @apply transition-all duration-300 ease-out;
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-strong);
-    }
-  }
-
-  .hover-glow {
-    @apply transition-all duration-300 ease-out;
-    &:hover {
-      box-shadow: var(--shadow-medium);
-      transform: scale(1.02);
-    }
-  }
-
-  /* Tech Icon Hover */
-  .tech-icon {
-    @apply transition-all duration-300 ease-out;
-    &:hover {
-      transform: translateY(-4px) scale(1.1);
-      filter: brightness(1.2);
-    }
-  }
+.tech-gradient {
+  background: var(--gradient-tech);
 }
 
-@layer utilities {
-  .text-gradient {
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .shadow-soft {
-    box-shadow: var(--shadow-soft);
-  }
-
-  .shadow-medium {
-    box-shadow: var(--shadow-medium);
-  }
-
-  .shadow-strong {
-    box-shadow: var(--shadow-strong);
-  }
+/* ── Text Gradient ──────────────────────────────────────────── */
+.text-gradient {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Keyframes */
+/* ── Shadows ────────────────────────────────────────────────── */
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-medium {
+  box-shadow: var(--shadow-medium);
+}
+
+.shadow-strong {
+  box-shadow: var(--shadow-strong);
+}
+
+/* ── Hover Effects ──────────────────────────────────────────── */
+.hover-lift {
+  transition: all 0.3s ease-out;
+}
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+}
+
+.hover-glow {
+  transition: all 0.3s ease-out;
+}
+.hover-glow:hover {
+  box-shadow: var(--shadow-medium);
+  transform: scale(1.02);
+}
+
+.tech-icon {
+  transition: all 0.3s ease-out;
+}
+.tech-icon:hover {
+  transform: translateY(-4px) scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out forwards;
+}
+
+/* ── Font ───────────────────────────────────────────────────── */
+.font-zalando {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+/* ── Keyframes ──────────────────────────────────────────────── */
 @keyframes fadeIn {
   from {
     opacity: 0;

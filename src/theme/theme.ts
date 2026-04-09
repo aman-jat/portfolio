@@ -59,9 +59,7 @@ const createAppleTheme = (mode: 'light' | 'dark') =>
       error: { main: appleColors.error }
     },
     typography: {
-      fontFamily: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Arial', 'sans-serif'].join(
-        ','
-      ),
+      fontFamily: ["'Source Sans 3'", 'sans-serif'].join(','),
       h1: {
         fontSize: '3.5rem',
         fontWeight: 700,
