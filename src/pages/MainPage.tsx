@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Box } from '@mui/material';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Skills from '@/components/Skills';
@@ -16,17 +17,17 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background font-zalando">
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }} className="font-zalando">
       <Navigation />
-      <main>
+      <Box component="main">
         <Hero />
         <About />
         <FeaturedProjects />
         <Skills />
         <Contact />
-      </main>
+      </Box>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

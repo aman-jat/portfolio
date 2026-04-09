@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import GithubIcon from '@/components/ui/GithubIcon';
-import { toast } from '@/hooks/use-toast';
 import {
   Box,
   Container,
@@ -14,7 +13,9 @@ import {
   Button,
   IconButton,
   CircularProgress,
-  Link
+  Link,
+  Snackbar,
+  Alert
 } from '@mui/material';
 
 const contactInfo = [
@@ -41,6 +42,11 @@ const contactInfo = [
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [snackbar, setSnackbar] = useState<{ open: boolean; message: string; severity: 'success' | 'error' }>({
+    open: false,
+    message: '',
+    severity: 'success'
+  });
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -70,13 +76,11 @@ const Contact = () => {
           message: formData.get('message')
         })
       });
-      toast({
-        title: 'Message sent successfully!',
-        description: "Thank you for reaching out. I'll get back to you soon."
-      });
+      setSnackbar({ open: true, message: "Message sent! I'll get back to you soon.", severity: 'success' });
       (e.target as HTMLFormElement).reset();
     } catch (error) {
       console.log('error', error);
+      setSnackbar({ open: true, message: 'Failed to send message. Please try again.', severity: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -323,6 +327,17 @@ const Contact = () => {
           </Grid>
         </Box>
       </Container>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={5000}
+        onClose={() => setSnackbar((s) => ({ ...s, open: false }))}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert severity={snackbar.severity} onClose={() => setSnackbar((s) => ({ ...s, open: false }))} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
